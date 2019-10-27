@@ -22,10 +22,8 @@ namespace IAmThereApi.Services
         private IUserRepository UserRepository { get; }
         public UserService(DataContext dataContext)
         {
-            this.UserRepository = new UserRepository(dataContext);
+            UserRepository = new UserRepository(dataContext);
         }
-
-
         public bool AddUser(UserRegisterModel userRegisterModel)
         {
             if (userRegisterModel != null)

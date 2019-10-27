@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IAmThereApi.Models
 {
-    public class PlaceLocation
+    public class Area
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -15,6 +15,9 @@ namespace IAmThereApi.Models
         public float Latitude { get; set; }
         [Required]
         public float Longitude { get; set; }
+        [Required]
+        //Area in meters from lat,lng.
+        public int AreaSize { get; set; }
         [Required]
         public Guid GroupId { get; set; }
 

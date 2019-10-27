@@ -18,7 +18,7 @@ namespace IAmThereApi.DAO
         public DbSet<UserGroup> UserGroup { get; set; }
         public DbSet<Group> Group { get; set; }
         public DbSet<Location> Location { get; set; }
-        public DbSet<PlaceLocation> PlaceLocation{ get; set; }
+        public DbSet<Area> PlaceLocation{ get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
