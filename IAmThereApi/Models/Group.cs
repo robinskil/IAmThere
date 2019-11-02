@@ -16,7 +16,6 @@ namespace IAmThereApi.Models
         public string GroupName { get; set; }
         [Required]
         public int PlaceLocationId { get; set; }
-
         public User Creator { get; set; }
         public Area Area { get; set; }
         public ICollection<UserGroup> Users { get; set; }

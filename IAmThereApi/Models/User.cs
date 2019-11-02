@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -26,7 +27,8 @@ namespace IAmThereApi.Models
         [Required]
         [StringLength(60)]
         public string Lastname { get; set; }
-
+        [Required]
+        public LastKnownLocation LastKnownLocation { get; set; }
         public ICollection<Location> Locations { get; set; }
         public ICollection<Group> CreatedGroups { get; set; }
         public ICollection<UserGroup> Groups { get; set; }

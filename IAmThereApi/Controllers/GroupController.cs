@@ -36,5 +36,27 @@ namespace IAmThereApi.Controllers
             }
             return BadRequest();
         }
+        [Authorize]
+        [Route("GetGroup")]
+        public IActionResult GetGroup(Guid groupId)
+        {
+            string guidstring = User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (groupId != default && Guid.TryParse(guidstring,out Guid accountGuid))
+            {
+                return Ok(GroupService.GetGroup(groupId, accountGuid));
+            }
+            return BadRequest();
+        }
+        [Authorize]
+        [Route("GetGroups")]
+        public IActionResult GetGroups()
+        {
+            string guidstring = User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (Guid.TryParse(guidstring, out Guid accountGuid))
+            {
+                return Ok(GroupService.GetGroups(accountGuid));
+            }
+            return BadRequest();
+        }
     }
 }
