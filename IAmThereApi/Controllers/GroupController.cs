@@ -24,6 +24,7 @@ namespace IAmThereApi.Controllers
 
         [Authorize]
         [Route("CreateGroup")]
+        [HttpPost]
         public IActionResult CreateGroup(CreateGroupModel createGroupModel)
         {
             string email = User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Email)?.Value;
@@ -55,6 +56,22 @@ namespace IAmThereApi.Controllers
             if (Guid.TryParse(guidstring, out Guid accountGuid))
             {
                 return Ok(GroupService.GetGroups(accountGuid));
+            }
+            return BadRequest();
+        }
+        [Authorize]
+        [Route("JoinGroup")]
+        [HttpPost]
+        public IActionResult JoinGroup(Guid groupId)
+        {
+            string guidstring = User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (Guid.TryParse(guidstring, out Guid accountGuid))
+            {
+                if (GroupService.JoinGroup(groupId, accountGuid))
+                {
+                    return Ok();
+                }
+                return BadRequest("Cant join the group.");
             }
             return BadRequest();
         }

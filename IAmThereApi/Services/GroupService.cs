@@ -13,6 +13,7 @@ namespace IAmThereApi.Services
     public interface IGroupService
     {
         bool CreateGroup(CreateGroupModel createGroupModel, string email);
+        bool JoinGroup(Guid groupId, Guid accountId);
         GroupViewModel GetGroup(Guid groupId, Guid accountId);
         ICollection<GroupViewModel> GetGroups(Guid accountId);
     }
@@ -33,6 +34,17 @@ namespace IAmThereApi.Services
             GroupRepository.AddEntity(group);
             GroupRepository.SaveChanges();
             return true;
+        }
+
+        public bool JoinGroup(Guid groupId, Guid accountId)
+        {
+            if (!GroupRepository.UserInGroup(accountId, groupId))
+            {
+                GroupRepository.AddUserToGroup(accountId, groupId);
+                GroupRepository.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public GroupViewModel GetGroup(Guid groupId, Guid accountId)
