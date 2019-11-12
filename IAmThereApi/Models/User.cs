@@ -18,7 +18,7 @@ namespace IAmThereApi.Models
         [DataType(DataType.EmailAddress)]
         [StringLength(100)]
         public string Email { get; set; }
-        [Required]
+        [Required]  
         [StringLength(255,MinimumLength = 10)]
         public string Password { get; set; }
         [Required]
@@ -27,7 +27,6 @@ namespace IAmThereApi.Models
         [Required]
         [StringLength(60)]
         public string Lastname { get; set; }
-        [Required]
         public LastKnownLocation LastKnownLocation { get; set; }
         public ICollection<Location> Locations { get; set; }
         public ICollection<Group> CreatedGroups { get; set; }
