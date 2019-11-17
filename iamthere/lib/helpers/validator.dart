@@ -20,10 +20,10 @@ class Validator {
   static String Function(String) emailValidator(String value) {
     return (value) {
       if (isEmpty(value)) {
-        return "An email address is required";
+        return "An email address is required.";
       }
       if (!validateEmail(value)) {
-        return "Invalid email address";
+        return "Invalid email address.";
       }
       return null;
     };
@@ -32,7 +32,7 @@ class Validator {
   static String Function(String) passwordValidator(String value) {
     return (value) {
       if (isEmpty(value)) {
-        return "A password is required";
+        return "A password is required.";
       }
       if (!minCharacters(value, passwordAmountCharacters)) {
         return "Password needs atleast ${passwordAmountCharacters} characters.";
@@ -47,10 +47,13 @@ class Validator {
       print(comparer.text);
       if (isEmpty(value)) {
         //print(value);
-        return "A password is required";
+        return "A password is required.";
       }
       if (!minCharacters(value, passwordAmountCharacters)) {
         return "Password needs atleast ${passwordAmountCharacters} characters.";
+      }
+      if (comparer.text != value) {
+        return "Passwords dont match.";
       }
       return null;
     };
@@ -59,7 +62,7 @@ class Validator {
   static String Function(String) firstNameValidator(String value) {
     return (value) {
       if (isEmpty(value)) {
-        return "A first name is required";
+        return "A first name is required.";
       }
       return null;
     };
@@ -68,7 +71,7 @@ class Validator {
   static String Function(String) lastNameValidator() {
     return (value) {
       if (isEmpty(value)) {
-        return "A last name is required";
+        return "A last name is required.";
       }
       return null;
     };

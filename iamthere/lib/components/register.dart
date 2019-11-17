@@ -203,7 +203,6 @@ class _RegisterScreen extends State<RegisterScreen> {
         );
       },
     );
-    print("reg");
     if (_fbKey.currentState.validate()) {
       UserRegisterModel userRegisterModel = UserRegisterModel(
           _emailController.text,
