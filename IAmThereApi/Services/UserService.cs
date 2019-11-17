@@ -63,8 +63,8 @@ namespace IAmThereApi.Services
             {
                 Email = userRegisterModel.Email,
                 Password = Hasher.GetHashedString(userRegisterModel.Password),
-                Firstname = userRegisterModel.Firstname,
-                Lastname = userRegisterModel.Lastname
+                Firstname = userRegisterModel.FirstName,
+                Lastname = userRegisterModel.LastName
             };
         }
     }

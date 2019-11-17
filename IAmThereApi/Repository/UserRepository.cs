@@ -20,7 +20,7 @@ namespace IAmThereApi.Repository
 
         public bool EmailAvailable(string email)
         {
-            return Context.Set<User>().Any(u => u.Email == email);
+            return !Context.Set<User>().Any(u => u.Email == email);
         }
     }
 }

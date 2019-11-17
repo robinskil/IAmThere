@@ -13,13 +13,13 @@ namespace IAmThereApi.RequestModels
         [StringLength(100, MinimumLength = 1)]
         public string Email { get; set; }
         [Required]
-        [StringLength(255, MinimumLength = 10)]
+        [StringLength(255, MinimumLength = 8)]
         public string Password { get; set; }
         [Required]
         [StringLength(60, MinimumLength = 1)]
-        public string Firstname { get; set; }
+        public string FirstName { get; set; }
         [Required]
         [StringLength(60,MinimumLength = 1)]
-        public string Lastname { get; set; }
+        public string LastName { get; set; }
     }
 }

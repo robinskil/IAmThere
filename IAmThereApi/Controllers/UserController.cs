@@ -20,12 +20,14 @@ namespace IAmThereApi.Controllers
             _userService = userService;
         }
         
+        [HttpPost]
         [Route("Register")]
         public IActionResult Register(UserRegisterModel userRegisterModel)
         {
             if (TryValidateModel(userRegisterModel))
             {
-                _userService.AddUser(userRegisterModel);
+                if(_userService.AddUser(userRegisterModel)) return Ok();
+                return BadRequest("Couldn't register");
             }
             return BadRequest();
         }
